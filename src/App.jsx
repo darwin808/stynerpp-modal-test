@@ -5,6 +5,8 @@ import viteLogo from "/vite.svg"
 function App() {
    const [modal, setmodal] = useState(true)
    const [cancelTxt, setcancelTxt] = useState("yes-cancel")
+   const [hover, sethover] = useState(false)
+
    const [content, setcontent] = useState(
       "Are you sure you want to cancel your subscription?",
    )
@@ -51,8 +53,21 @@ function App() {
                }}
             >
                <h4>{content}</h4>
-               <button onClick={handleYes}>{cancelTxt}</button>
                <button onClick={handleNo}>no</button>
+               <button
+                  onClick={handleYes}
+                  style={{
+                     cursor: hover ? "pointer" : "auto",
+                  }}
+                  onMouseOver={() => {
+                     sethover(true)
+                  }}
+                  onMouseOut={() => {
+                     sethover(false)
+                  }}
+               >
+                  {cancelTxt}
+               </button>
             </div>
          </div>
       </div>
